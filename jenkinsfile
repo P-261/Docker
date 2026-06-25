@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t my-image-app .'
+                bat 'docker build -t webimage-app .'
             }
         }
         stage('Run Docker Container') {
