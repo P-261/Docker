@@ -2,19 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Reopository') {
+        stage('Clone Repository') {
             steps {
-                git 'https://github.com/P-261/Docker.git'
+                git branch: 'main', url: 'https://github.com/P-261/Docker.git'
             }
         }
+
         stage('Build Docker Image') {
             steps {
                 bat 'docker build -t webimage-app .'
             }
         }
+
         stage('Run Docker Container') {
             steps {
-                bat 'docker run -d -p 8090:80 web-image-app'
+                bat 'docker run -d -p 8090:80 webimage-app'
             }
         }
     }
