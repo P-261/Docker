@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Reopository') {
+            steps {
+                git 'https://github.com/P-261/Docker.git'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t my-image-app .'
+            }
+        }
+        stage('Run Docker Container') {
+            steps {
+                bat 'docker run -d -p 8090:80 web-image-app'
+            }
+        }
+    }
+}
